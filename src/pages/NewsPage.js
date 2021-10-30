@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NewsArticleCard from '../components/NewsArticleCard';
-import {breadcrumbs, companyName} from '../links';
+import {breadcrumbs, companyName, server_url} from '../links';
 import BreadCrumbs from '../components/BreadCrumbs';
 import NewsSidebar from '../components/NewsSidebar';
+import axios from 'axios';
 
 /*eslint-disable*/
-const articles = [
-  {title: 'News 1', posterSrc: "assets/img/pexels-photo-615060.jpeg", author: "Author", date: "Date", description: "We can put some random content over here.", url: '/news/news1'},
-  {title: 'News 2', posterSrc: "assets/img/pexels-photo-615060.jpeg", author: "Author", date: "Date", description: "We can put some random content over here.", url: "/news/news2"},
-  {title: 'News 3', posterSrc: "assets/img/pexels-photo-615060.jpeg", author: "Author", date: "Date", description: "We can put some random content over here.", url: "/news/news3"},
-  {title: 'News 4', posterSrc: "assets/img/pexels-photo-615060.jpeg", author: "Author", date: "Date", description: "We can put some random content over here.", url: "/news/news4"},
-]
 
 export default function NewsPage() {
   document.title = "News | " +companyName;
-  // Get request with useEffect to query news articles
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    axios.get(server_url + '/news/')
+      .then(res => {
+        setArticles(res.data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, [])
   return(
     <main id="main">
       <BreadCrumbs crumbs={[breadcrumbs.home, breadcrumbs.news]}/>

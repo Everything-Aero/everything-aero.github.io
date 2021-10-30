@@ -25,7 +25,7 @@ export default function NewsArticleCard(props) {
           {description}
         </p>
         <div class="read-more">
-          <Link to={url}>Read More</Link>
+          <Link to={'/news/' + url}>Read More</Link>
         </div>
       </div>
 

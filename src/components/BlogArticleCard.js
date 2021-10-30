@@ -24,7 +24,7 @@ export default function BlogArticleCard(props) {
               <i class="fas fa-eye"></i>
             </a>
             <br/>
-            <Link to={url} class="btn-get-started animate__animated animate__fadeInUp" title="Read More">Read More</Link>
+            <Link to={'/blog/' + url} class="btn-get-started animate__animated animate__fadeInUp" title="Read More">Read More</Link>
           </div>
         </div>
       </div>

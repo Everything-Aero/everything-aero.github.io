@@ -35,3 +35,5 @@ export const breadcrumbs = {
     to: '/contact',
   },
 };
+
+export const server_url = "http://localhost:8000";

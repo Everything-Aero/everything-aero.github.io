@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
 import NewsSidebar from '../components/NewsSidebar';
-import {breadcrumbs} from '../links';
+import {breadcrumbs, server_url} from '../links';
 import parse from 'html-react-parser';
+import axios from 'axios';
+import { useParams } from 'react-router';
 
 export default function NewsArticlePage() {
-  // Get request with id from url to get the article
-  
-  const title = 'Test lol';
+  const {newsid} = useParams();
+  const [article, setArticle] = useState({title: '', article: `<div><h1 style={{textAlign: 'center'}}>Loading...</h1></div>`});
+  useEffect(() => {
+    axios.get(server_url + '/news/url/' + newsid)
+      .then(res => {
+        setArticle(res.data)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  },[newsid]);
   return(
     <main id="main">
-      <BreadCrumbs crumbs={[breadcrumbs.home, breadcrumbs.news, {label: title}]}/>
+      <BreadCrumbs crumbs={[breadcrumbs.home, breadcrumbs.news, {label: article.title}]}/>
       <section id="news" class="news">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="col-lg-8 entries">
               {
-                parse(article)
+                parse(article.article)
               }
             </div>
             <NewsSidebar/>
@@ -26,72 +36,3 @@ export default function NewsArticlePage() {
     </main>
   )
 }
-
-const article=`
-<article class="entry entry-single">
-
-  <div class="entry-img">
-    <img src="https://i.ibb.co/m0WqnRP/pexels-photo-615060.jpg" alt="pexels-photo-615060" class="img-fluid"/>
-  </div>
-
-  <h2 class="entry-title">
-    <a href="news-single.html">News Article 1</a>
-  </h2>
-
-  <div class="entry-meta">
-    <ul>
-      <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="news-single.html">Author</a></li>
-      <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="news-single.html"><time datetime="2020-01-01">Date</time></a></li>
-    </ul>
-  </div>
-
-  <div class="entry-content">
-    <p>
-      Para example 1
-    </p>
-
-    <p>
-      Para example 2
-    </p>
-
-    <blockquote>
-      <p>
-        Quote example 1
-      </p>
-    </blockquote>
-
-    <p>
-      Para example 3
-    </p>
-
-    <h3>Heading example 1</h3>
-    <p>
-      Para example 4
-    </p>
-    <img src="https://i.ibb.co/31JDJQs/stre.jpg" alt="stre" class="img-fluid"/>
-
-    <h3>Heading example 2</h3>
-    <p>
-      Para example 5
-    </p>
-    <p>
-      Para example 6
-    </p>
-
-  </div>
-
-  <div class="entry-footer">
-    <i class="bi bi-folder"></i>
-    <ul class="cats">
-      <li><a href="#">Link</a></li>
-    </ul>
-
-    <i class="bi bi-tags"></i>
-    <ul class="tags">
-      <li><a href="#">Tag 1</a></li>
-      <li><a href="#">Tag 2</a></li>
-      <li><a href="#">Tag 3</a></li>
-    </ul>
-  </div>
-</article>
-`
