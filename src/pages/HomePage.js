@@ -1,64 +1,50 @@
 import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import {companyName} from '../links';
 
-// Make it purely reactive
+/*eslint-disable*/
 const HeroCarousel = () => {
   return (
     <section id="hero">
       <div class="hero-container">
-        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-          <div class="carousel-inner" role="listbox">
-
-            <div class="carousel-item active">
-              <video autoplay muted loop id="bg-video">
-                <source src={process.env.PUBLIC_URL + "assets/img/welcomeVideo2.mp4"} type="video/mp4" />
-              </video>
-              <div class="carousel-container">
-                <div class="carousel-content">
-                  <div class="panell">
+        <Carousel>
+          <Carousel.Item>
+            <video autoPlay muted loop id="bg-video">
+              <source src={process.env.PUBLIC_URL + "assets/img/welcomeVideo2.mp4"} type="video/mp4" />
+            </video>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <div class="panell">
                   <h2 class="animate__animated animate__fadeInDown">Welcome to <span class="Everything-Text">Everything</span><span class="Aero-Text">Aero</span></h2>
                   <p class="animate__animated animate__fadeInUp">A dedicated group of engineers working together to bring the enthralling world of aviation and space technology right to your fingertips.</p>
                   <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
                 </div>
+              </div>
+            </div>
+          </Carousel.Item>
+          <Carousel.Item style={{background: 'url(assets/img/sat.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <div class="panell">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span class="Everything-Text">Everything</span><span class="Aero-Text">Aero</span></h2>
+                  <p class="animate__animated animate__fadeInUp">A dedicated group of engineers working together to bring the enthralling world of aviation and space technology right to your fingertips.</p>
+                  <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
                 </div>
               </div>
             </div>
-
-            {/* <div class="carousel-item" style={{background: 'url(assets/img/sat.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-              <div class="carousel-container">
-                <div class="carousel-content">
-                  <div class="panell">
+          </Carousel.Item>
+          <Carousel.Item style={{background: 'url(assets/img/pexels-photo-615060.jpeg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover'}}>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <div class="panell">
                   <h2 class="animate__animated animate__fadeInDown">Welcome to <span class="Everything-Text">Everything</span><span class="Aero-Text">Aero</span></h2>
-                    <p class="animate__animated animate__fadeInUp">A dedicated group of engineers working together to bring the enthralling world of aviation and space technology right to your fingertips.</p>
-                    <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-                  </div>
+                  <p class="animate__animated animate__fadeInUp">A dedicated group of engineers working together to bring the enthralling world of aviation and space technology right to your fingertips.</p>
+                  <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
                 </div>
               </div>
-            </div> */}
-
-            {/* <div class="carousel-item" style={{background: 'url(assets/img/pexels-photo-615060.jpeg)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-              <div class="carousel-container">
-                <div class="carousel-content">
-                  <div class="panell">
-                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span class="Everything-Text">Everything</span><span class="Aero-Text">Aero</span></h2>
-                    <p class="animate__animated animate__fadeInUp">A dedicated group of engineers working together to bring the enthralling world of aviation and space technology right to your fingertips.</p>
-                    <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
-          </div>
-
-          <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-          </a>
-
-          <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-          </a>
-
-        </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
       </div>
     </section>
   );
@@ -155,6 +141,7 @@ const Services = () => {
 }
 
 export default function HomePage() {
+  document.title = "Home | " + companyName;
   return(
     <>
       <HeroCarousel/>
