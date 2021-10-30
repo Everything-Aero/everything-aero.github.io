@@ -12,7 +12,7 @@ export default function Header() {
   
     return (
       <li className={match ? "is-active" : ""}>
-        <Link className={match ? "active" : ""} to={to}>{label}</Link>
+        <Link style={{textDecoration: 'none'}} className={match ? "active" : ""} to={to}>{label}</Link>
       </li>
     );
   }

@@ -40,7 +40,7 @@ export default function AboutUsPage() {
             <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
               <div class="count-box">
                 <i class="bi bi-emoji-smile"></i>
-                <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1" class="purecounter">1000</span>
                 <p><strong>Happy Users</strong> coming to the website</p>
               </div>
             </div>
@@ -48,7 +48,7 @@ export default function AboutUsPage() {
             <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
               <div class="count-box">
                 <i class="bi bi-journal-richtext"></i>
-                <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter">5</span>
                 <p><strong>Sections</strong> to explore!</p>
               </div>
             </div>
@@ -56,7 +56,7 @@ export default function AboutUsPage() {
             <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
               <div class="count-box">
                 <i class="bi bi-headset"></i>
-                <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter">24</span>
                 <p><strong>Hours Of Support</strong> from us</p>
                 
               </div>
@@ -65,7 +65,7 @@ export default function AboutUsPage() {
             <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
               <div class="count-box">
                 <i class="bi bi-people"></i>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter">15</span>
                 <p><strong>Hard Workers</strong> and expanding</p>
               </div>
             </div>

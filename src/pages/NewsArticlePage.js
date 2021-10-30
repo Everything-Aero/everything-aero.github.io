@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
 import NewsSidebar from '../components/NewsSidebar';
 import {breadcrumbs} from '../links';
