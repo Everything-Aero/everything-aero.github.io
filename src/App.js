@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
+import 'jquery/dist/jquery.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header'
+import HomePage from './pages/HomePage';
+import AboutUsPage from './pages/AboutUsPage';
+import BlogPage from './pages/BlogPage';
+import ContactUsPage from './pages/ContactUsPage';
+import NewsArticlePage from './pages/NewsArticlePage';
+import BlogArticlePage from './pages/BlogArticlePage';
+import AcademicsPage from './pages/AcademicsPage';
+import NewsPage from './pages/NewsPage';
+import Footer from './components/Footer';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header/>
+
+      <Route exact path='/'>
+        <HomePage/>
+      </Route>
+      
+      <Switch>
+        <Route path='/blog/:blogid'>
+          <BlogArticlePage/>
+        </Route>
+        <Route path='/blog' component={BlogPage}/>
+      </Switch>
+
+      <Switch>
+        <Route path='/news/:newsid'>
+          <NewsArticlePage/>
+        </Route>
+        <Route path='/news' component={NewsPage}/>
+      </Switch>
+
+      <Route path='/academics'>
+        <AcademicsPage/>
+      </Route>
+      <Route path='/about'>
+        <AboutUsPage/>
+      </Route>
+      <Route path='/contact'>
+        <ContactUsPage/>
+      </Route>
+
+      <Footer/>
+    </>
   );
 }
-
-export default App;
