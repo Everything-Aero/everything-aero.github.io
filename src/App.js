@@ -12,6 +12,7 @@ import NewsArticlePage from './pages/NewsArticlePage';
 import BlogArticlePage from './pages/BlogArticlePage';
 import AcademicsPage from './pages/AcademicsPage';
 import NewsPage from './pages/NewsPage';
+import EditorPage from './pages/EditorPage';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -36,6 +37,10 @@ export default function App() {
         </Route>
         <Route path='/news' component={NewsPage}/>
       </Switch>
+
+      <Route path='/editor'>
+        <EditorPage/>
+      </Route>
 
       <Route path='/academics'>
         <AcademicsPage/>

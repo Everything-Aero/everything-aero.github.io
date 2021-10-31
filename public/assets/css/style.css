@@ -3739,3 +3739,11 @@ progress {
   border: 2px solid #15316E;
   box-shadow: 0 5px 15px #15316E;
 }
+
+.editor-box {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
