@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, useRouteMatch} from 'react-router-dom';
 import {routes} from '../links';
 
-// Make purely reactive
 export default function Header() {
   const MenuLink = ({label, to, activeOnlyWhenExact}) => {
     let match = useRouteMatch({
@@ -11,7 +10,7 @@ export default function Header() {
     });
   
     return (
-      <li className={match ? "is-active" : ""}>
+      <li className={match ? "is-active nav-item" : "nav-item"}>
         <Link style={{textDecoration: 'none'}} className={match ? "active" : ""} to={to}>{label}</Link>
       </li>
     );
@@ -26,13 +25,17 @@ export default function Header() {
           <h1><Link to='/'><span class="Everything-Text">Everything</span><span class="Aero-Text">Aero</span></Link></h1>
         </div>
         
-        <nav id="navbar" class="navbar">
-          <ul>
-          {
-            routes.map(ele => MenuLink(ele))
-          }
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
+        <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+            {
+              routes.map(ele => MenuLink(ele))
+            }
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
