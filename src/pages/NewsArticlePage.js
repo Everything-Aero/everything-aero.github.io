@@ -4,12 +4,13 @@ import NewsSidebar from '../components/NewsSidebar';
 import {breadcrumbs, server_url} from '../links';
 import parse from 'html-react-parser';
 import axios from 'axios';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { Container, Button } from 'react-floating-action-button';
 
 export default function NewsArticlePage() {
   const {newsid} = useParams();
-  const [article, setArticle] = useState({title: '', article: `<div><h1 style={{textAlign: 'center'}}>Loading...</h1></div>`});
+  const history = useHistory();
+  const [article, setArticle] = useState({title: '', url: '', _id: '', article: `<div><h1 style={{textAlign: 'center'}}>Loading...</h1></div>`});
   useEffect(() => {
     axios.get(server_url + '/news/url/' + newsid)
       .then(res => {
@@ -45,7 +46,7 @@ export default function NewsArticlePage() {
           icon="fas fa-edit"
           tooltip="Edit article"
           onClick={() => {
-            console.log("fab clicked");
+            history.push('/editor/news?url=' + article.url)
           }}
           styles={{
             backgroundColor: '#15316E',
@@ -57,7 +58,10 @@ export default function NewsArticlePage() {
           icon="fas fa-trash"
           tooltip="Delete article"
           onClick={() => {
-            console.log("fab clicked");
+            axios.delete(server_url + '/news/' + article._id)
+            .then(res => console.log(res))
+            .catch(err => console.error(err))
+            history.push('/news')
           }}
           styles={{
             backgroundColor: '#15316E',
@@ -70,7 +74,7 @@ export default function NewsArticlePage() {
           rotate={true}
           tooltip="Create new article"
           onClick={() => {
-            console.log("fab clicked");
+            history.push('/editor/news')
           }}
           styles={{
             backgroundColor: '#15316E',

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import NewsArticleCard from '../components/NewsArticleCard';
 import {breadcrumbs, companyName, server_url} from '../links';
 import BreadCrumbs from '../components/BreadCrumbs';
@@ -11,6 +12,7 @@ import { Container, Button } from 'react-floating-action-button';
 export default function NewsPage() {
   document.title = "News | " +companyName;
   const [articles, setArticles] = useState([]);
+  const history = useHistory();
   useEffect(() => {
     axios.get(server_url + '/news/')
       .then(res => {
@@ -53,7 +55,7 @@ export default function NewsPage() {
           icon="fas fa-plus"
           tooltip="Create new article"
           onClick={() => {
-            console.log("fab clicked");
+            history.push('/editor/news');
           }}
           styles={{
             backgroundColor: '#15316E',
