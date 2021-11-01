@@ -4,6 +4,7 @@ import {breadcrumbs, companyName, server_url} from '../links';
 import BreadCrumbs from '../components/BreadCrumbs';
 import NewsSidebar from '../components/NewsSidebar';
 import axios from 'axios';
+import { Container, Button } from 'react-floating-action-button';
 
 /*eslint-disable*/
 
@@ -42,6 +43,24 @@ export default function NewsPage() {
           </div>
         </div>
       </section>
+
+      <Container styles={{
+        bottom: '20px',
+        right: '20px'
+      }}>
+        <Button
+          className="btn-floating btn-large"
+          icon="fas fa-plus"
+          tooltip="Create new article"
+          onClick={() => {
+            console.log("fab clicked");
+          }}
+          styles={{
+            backgroundColor: '#15316E',
+            color: '#fff',
+          }}
+        />
+      </Container>
     </main>
   );
 }

@@ -5,6 +5,7 @@ import {breadcrumbs, server_url} from '../links';
 import parse from 'html-react-parser';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import { Container, Button } from 'react-floating-action-button';
 
 export default function NewsArticlePage() {
   const {newsid} = useParams();
@@ -12,7 +13,9 @@ export default function NewsArticlePage() {
   useEffect(() => {
     axios.get(server_url + '/news/url/' + newsid)
       .then(res => {
-        setArticle(res.data)
+        if(res.status === 200 && res.data["article"] !== undefined) {
+          setArticle(res.data)
+        }
       })
       .catch(err => {
         console.error(err)
@@ -33,6 +36,48 @@ export default function NewsArticlePage() {
           </div>
         </div>
       </section>
+      <Container styles={{
+        bottom: '20px',
+        right: '20px'
+      }}>
+        <Button
+          className="btn-floating btn-large"
+          icon="fas fa-edit"
+          tooltip="Edit article"
+          onClick={() => {
+            console.log("fab clicked");
+          }}
+          styles={{
+            backgroundColor: '#15316E',
+            color: '#fff',
+          }}
+        />
+        <Button
+          className="btn-floating btn-large"
+          icon="fas fa-trash"
+          tooltip="Delete article"
+          onClick={() => {
+            console.log("fab clicked");
+          }}
+          styles={{
+            backgroundColor: '#15316E',
+            color: '#fff',
+          }}
+        />
+        <Button
+          className="btn-floating btn-large"
+          icon="fas fa-plus"
+          rotate={true}
+          tooltip="Create new article"
+          onClick={() => {
+            console.log("fab clicked");
+          }}
+          styles={{
+            backgroundColor: '#15316E',
+            color: '#fff',
+          }}
+        />
+      </Container>
     </main>
   )
 }

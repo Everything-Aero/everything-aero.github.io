@@ -38,10 +38,9 @@ export default function App() {
         <Route path='/news' component={NewsPage}/>
       </Switch>
 
-      <Route path='/editor'>
+      <Route path='/editor/:articletype'>
         <EditorPage/>
       </Route>
-
       <Route path='/academics'>
         <AcademicsPage/>
       </Route>
